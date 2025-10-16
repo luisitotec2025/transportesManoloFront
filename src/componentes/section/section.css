@@ -1,0 +1,57 @@
+.section {
+  display: flex;
+  justify-content: space-around;
+  gap: 20px;
+  padding: 50px 20px;
+  background-color: #f0f2f5;
+  flex-wrap: wrap; /* permite responsividad */
+}
+
+.container {
+  flex: 1 1 300px; /* ancho mínimo y flexible */
+  max-width: 350px;
+  border: 2px solid #ffffff;
+  border-radius: 15px;
+  overflow: hidden; /* para que la imagen no sobresalga */
+  background-color: #0066cc;
+  color: white;
+  text-align: center;
+  transition: transform 0.3s, box-shadow 0.3s;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.container:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 15px 25px rgba(0,0,0,0.3);
+}
+
+/* Contenedor de imagen para mantener proporción */
+.container-img-wrapper {
+  width: 100%;
+  height: 180px; /* altura fija */
+  overflow: hidden;
+}
+
+.container-img-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* rellena el contenedor manteniendo la proporción */
+  display: block;
+}
+
+/* Títulos */
+.container h3 {
+  margin: 15px 10px 10px 10px;
+  font-size: 1.4rem;
+  font-weight: bold;
+}
+
+/* Párrafos */
+.container p {
+  font-size: 1rem;
+  line-height: 1.5;
+  color: #f0f2f5;
+  margin: 0 10px 20px 10px;
+}

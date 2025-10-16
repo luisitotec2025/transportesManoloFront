@@ -1,0 +1,167 @@
+.vehiculos-container {
+  display: flex;
+  flex-wrap: wrap;        /* Permite que los vehículos bajen a la siguiente fila */
+  gap: 20px;              /* Espacio entre tarjetas */
+  justify-content: flex-start; /* Alinea todo a la izquierda */
+  padding: 30px 40px;
+  align-items: flex-start; /* Mantiene las tarjetas bien alineadas arriba */
+  background-color: #fafafa; /* Fondo sutil */
+}
+
+/* Tarjeta individual */
+.vehiculo-card {
+  border: 1px solid #ddd;
+  border-radius: 14px;
+  padding: 15px;
+  width: 260px;
+  background-color: #ffffff;
+  text-align: left; /* Alineación del texto a la izquierda */
+  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  cursor: pointer;
+}
+
+/* Efecto al pasar el mouse */
+.vehiculo-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 18px rgba(0,0,0,0.25);
+}
+
+/* Imagen del vehículo */
+.vehiculo-imagen {
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+  border-radius: 10px;
+  margin-bottom: 10px;
+}
+
+/* Título */
+.vehiculo-card h3 {
+  font-size: 1.1rem;
+  color: #222;
+  margin-bottom: 5px;
+}
+
+/* Texto de detalles */
+.vehiculo-card p {
+  font-size: 0.9rem;
+  color: #555;
+  margin: 3px 0;
+}
+
+/* Botones */
+.vehiculo-botones {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+}
+
+.vehiculo-botones button {
+  flex: 1;
+  padding: 8px 10px;
+  border: none;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+  margin: 0 5px;
+}
+
+/* Botón Cotizar */
+.btn-cotizar {
+  background-color: #007bff;
+  color: #fff;
+}
+
+.btn-cotizar:hover {
+  background-color: #0056b3;
+  transform: translateY(-2px);
+}
+
+/* Botón Contratar */
+.btn-contratar {
+  background-color: #28a745;
+  color: #fff;
+}
+
+.btn-contratar:hover {
+  background-color: #1e7e34;
+  transform: translateY(-2px);
+}
+
+/* Modal para cotización */
+.modal-cotizacion {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 12px;
+  width: 90%;
+  max-width: 500px;
+  position: relative;
+}
+
+.cerrar-modal {
+  position: absolute;
+  top: 8px;
+  right: 12px;
+  background: none;
+  border: none;
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+
+
+.filtros-container {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin: 0 auto 30px; /* Centra el contenedor si usas max-width */
+  padding: 16px;
+  background-color: #f8f9fa;
+  border-radius: 8px;
+  max-width: 450px; /* 👈 Ajusta este valor según lo que necesites */
+  width: 100%;
+}
+.filtro-item {
+  display: flex;
+  flex-direction: column;
+}
+
+.filtro-item label {
+  font-weight: bold;
+  margin-bottom: 6px;
+  color: #333;
+}
+
+.filtro-select {
+  padding: 8px 12px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 16px;
+  background-color: white;
+  width: 100%; /* Asegura que el select ocupe todo el ancho del contenedor */
+}
+
+.src {
+  text-align: center; /* ← Esto ahora sí centrará la imagen en todo el ancho */
+  margin: 16px 0 0 0;
+}
+
+.src img {
+  max-width: 100%;
+  height: auto;
+}

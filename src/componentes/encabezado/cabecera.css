@@ -1,0 +1,30 @@
+.cabecera {
+  background-color: #004080; /* azul corporativo */
+  color: white;
+  padding: 20px 40px;
+}
+
+.cabecera-content {
+  display: flex;
+  flex-direction: column; /* columna para centrar logo y texto */
+  align-items: center; /* centra horizontalmente */
+  text-align: center;  /* centra el texto */
+  gap: 15px; /* espacio entre logo y texto */
+}
+
+.logo {
+  width: 100px; /* tamaño uniforme */
+  height: 100px;
+  object-fit: contain; /* mantiene proporción */
+  border-radius: 10px; /* opcional, suaviza bordes */
+}
+
+.cabecera-text h1 {
+  margin: 0;
+  font-size: 2rem;
+}
+
+.cabecera-text p {
+  margin: 5px 0 0 0;
+  font-size: 1rem;
+}

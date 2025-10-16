@@ -1,0 +1,59 @@
+.social-media {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  padding: 20px 0;
+}
+
+.social-btn {
+  display: flex; /* flex para alinear icono y texto */
+  align-items: center;
+  justify-content: center;
+  gap: 8px; /* espacio entre icono y texto */
+  padding: 12px 25px;
+  border-radius: 25px;
+  color: white;
+  font-weight: bold;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  font-family: Arial, sans-serif;
+  min-width: 140px;
+  font-size: 1rem;
+}
+
+/* Iconos dentro de los botones */
+.social-btn .icon {
+  font-size: 1.2rem;
+}
+
+/* Facebook */
+.social-btn.facebook {
+  background-color: #1877f2;
+}
+
+.social-btn.facebook:hover {
+  background-color: #145db2;
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+/* WhatsApp */
+.social-btn.whatsapp {
+  background-color: #25d366;
+}
+
+.social-btn.whatsapp:hover {
+  background-color: #1ebe57;
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+.social-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  text-align: center;
+  color: #004080;
+  margin-bottom: 15px;
+  text-transform: uppercase;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+}

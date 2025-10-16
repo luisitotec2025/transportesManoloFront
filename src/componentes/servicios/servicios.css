@@ -1,0 +1,12 @@
+.banner-servicios-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin: 20px 0;
+}
+
+.banner-servicios-imagen {
+  max-width: 100%;
+  height: auto;
+  border-radius: 10px;
+}

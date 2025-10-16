@@ -1,0 +1,19 @@
+.banner-pagos-container {
+  width: 100%;
+  max-width: 1000px; /* puedes ajustar el tamaño máximo si deseas */
+  margin: 40px auto; /* centrado horizontal y margen superior/inferior */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden; /* evita que sobresalga algo de la imagen */
+  border-radius: 15px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.2);
+  background-color: #fff; /* opcional, fondo blanco */
+}
+
+.banner-pagos-imagen {
+  width: 100%;
+  height: auto;
+  object-fit: contain; /* mantiene la proporción, no corta la imagen */
+  display: block;
+}

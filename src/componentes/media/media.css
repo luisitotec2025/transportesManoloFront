@@ -1,0 +1,16 @@
+.media-slider {
+  width: 100%;
+  max-width: 900px; /* ancho máximo */
+  margin: 40px auto;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+}
+
+.media-image {
+  width: 100%;
+  height: auto; /* altura automática según la imagen */
+  object-fit: contain; /* mantiene proporción sin recortar */
+  object-position: center;
+  transition: opacity 1s ease-in-out;
+}
