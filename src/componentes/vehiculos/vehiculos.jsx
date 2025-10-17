@@ -18,10 +18,13 @@ const Vehiculos = () => {
         if (!response.ok) throw new Error('Error al cargar vehículos');
 
         const data = await response.json();
+
+        // Como las fotos ya están en Cloudinary, usamos directamente vehiculo.foto
         const dataConURL = data.map(v => ({
           ...v,
-          fotoURL: v.foto ? `${API_URL}${v.foto}` : '/sin-foto.png'
+          fotoURL: v.foto || '/sin-foto.png'
         }));
+
         setVehiculos(dataConURL);
       } catch (err) {
         console.error(err);
@@ -80,10 +83,6 @@ const Vehiculos = () => {
               <option key={cap} value={cap}>{cap}</option>
             ))}
           </select>
-        </div>
-
-        <div className="src">
-          <img src="/contaccenter-removebg-preview.png" alt="contact-center" />
         </div>
       </div>
 
