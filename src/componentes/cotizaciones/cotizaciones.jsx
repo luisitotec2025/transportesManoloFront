@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { API_URL } from '../../config';
 import './cotizaciones.css';
 
 const Cotizaciones = ({ vehiculo, onCerrar }) => {
@@ -14,8 +15,14 @@ const Cotizaciones = ({ vehiculo, onCerrar }) => {
         setEnviando(true);
         setMensaje('');
 
+        if (!nombre || !telefono || !fecha) {
+            setMensaje('⚠️ Todos los campos son obligatorios');
+            setEnviando(false);
+            return;
+        }
+
         try {
-            const response = await fetch('http://127.0.0.1:8000/cotizaciones/agregar/', {
+            const response = await fetch(`${API_URL}/cotizaciones/`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
@@ -33,7 +40,6 @@ const Cotizaciones = ({ vehiculo, onCerrar }) => {
                 setTelefono('');
                 setFecha('');
                 setComentario('');
-                // Opcional: cerrar modal automáticamente después de 2s
                 setTimeout(() => onCerrar(), 2000);
             } else {
                 setMensaje('❌ Error al enviar la cotización');
@@ -63,7 +69,9 @@ const Cotizaciones = ({ vehiculo, onCerrar }) => {
                     <label>Comentario:</label>
                     <textarea value={comentario} onChange={e => setComentario(e.target.value)} />
 
-                    <button type="submit" disabled={enviando}>{enviando ? 'Enviando...' : 'Enviar Cotización'}</button>
+                    <button type="submit" disabled={enviando}>
+                        {enviando ? 'Enviando...' : 'Enviar Cotización'}
+                    </button>
                 </form>
                 {mensaje && <p className="mensaje">{mensaje}</p>}
             </div>

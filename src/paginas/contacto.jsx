@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "./contacto.css";
+import { API_URL } from "../config";
 
 
 const Contacto = () => {
@@ -24,7 +25,7 @@ const Contacto = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await fetch("http://127.0.0.1:8000/contacto/", {
+      const res = await fetch(`${API_URL}/contacto/`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

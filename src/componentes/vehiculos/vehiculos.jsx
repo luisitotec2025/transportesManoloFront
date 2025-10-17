@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import Cotizaciones from '../cotizaciones/cotizaciones';
+import { API_URL } from '../../config';
 import './vehiculos.css';
 
 const Vehiculos = () => {
@@ -8,22 +9,32 @@ const Vehiculos = () => {
   const [vehiculoSeleccionado, setVehiculoSeleccionado] = useState(null);
   const [filtroMarca, setFiltroMarca] = useState('todos');
   const [filtroCapacidad, setFiltroCapacidad] = useState('todos');
+  const [error, setError] = useState('');
 
   useEffect(() => {
-    fetch('http://127.0.0.1:8000/vehiculos/')
-      .then((response) => response.json())
-      .then((data) => {
+    const fetchVehiculos = async () => {
+      try {
+        const response = await fetch(`${API_URL}/vehiculos/`);
+        if (!response.ok) throw new Error('Error al cargar vehículos');
+
+        const data = await response.json();
         const dataConURL = data.map(v => ({
           ...v,
-          fotoURL: v.foto ? `http://127.0.0.1:8000${v.foto}` : '/sin-foto.png'
+          fotoURL: v.foto ? `${API_URL}${v.foto}` : '/sin-foto.png'
         }));
         setVehiculos(dataConURL);
-      })
-      .catch((error) => console.error("Error al cargar vehículos:", error))
-      .finally(() => setCargando(false));
+      } catch (err) {
+        console.error(err);
+        setError('⚠️ No se pudieron cargar los vehículos. Intenta más tarde.');
+      } finally {
+        setCargando(false);
+      }
+    };
+
+    fetchVehiculos();
   }, []);
 
-  // Obtener listas únicas para los filtros
+  // Listas únicas para filtros
   const marcasUnicas = [...new Set(vehiculos.map(v => v.marca))].sort();
   const capacidadesUnicas = [...new Set(vehiculos.map(v => v.capacidad))].sort();
 
@@ -35,10 +46,11 @@ const Vehiculos = () => {
   });
 
   if (cargando) return <p>Cargando vehículos...</p>;
+  if (error) return <p>{error}</p>;
 
   return (
     <div className="vehiculos-container">
-      {/* ✅ Filtros */}
+      {/* Filtros */}
       <div className="filtros-container">
         <div className="filtro-item">
           <label htmlFor="marca">Filtrar por marca:</label>
@@ -70,16 +82,12 @@ const Vehiculos = () => {
           </select>
         </div>
 
-        {/* ✅ Ahora está al mismo nivel que los filtros */}
         <div className="src">
           <img src="/contaccenter-removebg-preview.png" alt="contact-center" />
         </div>
-
-
-
       </div>
 
-      {/* ✅ Lista de vehículos */}
+      {/* Lista de vehículos */}
       {vehiculosFiltrados.length === 0 ? (
         <p>No hay vehículos que coincidan con los filtros seleccionados.</p>
       ) : (
@@ -95,7 +103,7 @@ const Vehiculos = () => {
             <p>Placa: {vehiculo.placa}</p>
             <p>Tipo: {vehiculo.tipo}</p>
             <p>Capacidad: {vehiculo.capacidad}</p>
-            <p>Color: {vehiculo.color}</p>
+            <p>Color: {vehiculo.color || 'N/A'}</p>
 
             <div className="vehiculo-botones">
               <button
@@ -109,8 +117,6 @@ const Vehiculos = () => {
           </div>
         ))
       )}
-
-
 
       {/* Modal de cotización */}
       {vehiculoSeleccionado && (
