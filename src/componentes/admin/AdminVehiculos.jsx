@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { API_URL } from "../../config";
 import "./AdminVehiculos.css";
 
 const AdminVehiculos = () => {
@@ -18,21 +19,21 @@ const AdminVehiculos = () => {
   const [subiendo, setSubiendo] = useState(false);
   const [mensaje, setMensaje] = useState("");
 
+  // Actualiza campos de texto
   const handleChange = (e) => {
     const { name, value } = e.target;
     setVehiculo({ ...vehiculo, [name]: value });
   };
 
+  // Maneja cambio de archivo
   const handleFileChange = (e) => {
     const file = e.target.files[0];
     setVehiculo({ ...vehiculo, foto: file });
-    if (file) {
-      setPreview(URL.createObjectURL(file));
-    } else {
-      setPreview(null);
-    }
+    if (file) setPreview(URL.createObjectURL(file));
+    else setPreview(null);
   };
 
+  // Envío del formulario
   const handleSubmit = async (e) => {
     e.preventDefault();
     setSubiendo(true);
@@ -41,11 +42,11 @@ const AdminVehiculos = () => {
 
     const formData = new FormData();
     for (const key in vehiculo) {
-      formData.append(key, vehiculo[key]);
+      if (vehiculo[key] !== null) formData.append(key, vehiculo[key]);
     }
 
     try {
-      const response = await fetch("http://127.0.0.1:8000/vehiculos/agregar/", {
+      const response = await fetch(`${API_URL}/vehiculos/agregar/`, {
         method: "POST",
         body: formData,
       });
@@ -54,10 +55,8 @@ const AdminVehiculos = () => {
         const data = await response.json();
         setMensaje(`✅ Vehículo agregado correctamente (ID: ${data.id})`);
 
-        // Si el backend devuelve la URL completa de la foto, se muestra
-        if (data.foto_url) {
-          setFotoSubida(data.foto_url);
-        }
+        // Mostrar imagen subida desde backend (Cloudinary)
+        if (data.foto_url) setFotoSubida(data.foto_url);
 
         // Limpiar formulario
         setVehiculo({
