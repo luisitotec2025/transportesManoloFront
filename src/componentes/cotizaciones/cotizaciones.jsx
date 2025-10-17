@@ -22,7 +22,7 @@ const Cotizaciones = ({ vehiculo, onCerrar }) => {
         }
 
         try {
-            const response = await fetch(`${API_URL}/cotizaciones/`, {
+            const response = await fetch(`${API_URL}/cotizaciones/agregar/`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
