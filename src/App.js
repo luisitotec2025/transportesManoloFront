@@ -21,8 +21,8 @@ import './componentes/vehiculos/vehiculos.css';
 import InfoBannerPagos from './componentes/infoBannerPagos/infoBannerPagos';
 import MapaCoberturaInicio from './componentes/mapaCoberturaInicio/mapaCoberturaInicio';
 import Servicios from './componentes/servicios/servicios';
+import ProtectedPanel from './componentes/login/ProtectedPanel';
 
-import AdminVehiculos from './componentes/admin/AdminVehiculos';
 
 
 function App() {
@@ -49,8 +49,9 @@ function App() {
         <Route path="/contacto" element={<Contacto />} />
         <Route path="/flota" element={<Vehiculos />} />
         <Route path="/servicios" element={<Servicios />} />
-
-        <Route path="/panel" element={<AdminVehiculos />} />
+        <Route path="/panel" element={<ProtectedPanel />} />
+        
+        
 
       </Routes>
     </Router>
